@@ -19,31 +19,32 @@
 DHT dht(DHTPIN, DHTTYPE);
 void setup() {
 
-    // TODO 4:
-    // Initialize Serial communication (9600 baud rate)
+    Serial.begin(9600);
+    dht.begin();
 
-    // TODO 5:
-    // Initialize the DHT sensor
+    Serial.println("DHT11 Temperature and Humidity Monitor");
+    Serial.println("System Initialized...");
 
-    // TODO 6:
-    // Print a system initialization message
 }
 
+
 void loop() {
+    float humidity = dht.readHumidity();
 
-    // TODO 7:
-    // Read humidity value from sensor
+    float temperature = dht.readTemperature();
 
-    // TODO 8:
-    // Read temperature value from sensor
+    if (isnan(humidity) || isnan(temperature)) {
+        Serial.println("Failed to read from DHT sensor!");
+        return;
+    }
 
-    // TODO 9:
-    // Check if either reading failed using isnan()
-    // If failed, print error message and return
+    Serial.print("Humidity: ");
+    Serial.print(humidity);
+    Serial.print(" %\t");
 
-    // TODO 10:
-    // Print formatted temperature and humidity values
+    Serial.print("Temperature: ");
+    Serial.print(temperature);
+    Serial.println(" °C");
 
-    // TODO 11:
-    // Add a 2-second delay before next reading
+    delay(2000);
 }
