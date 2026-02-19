@@ -1,17 +1,22 @@
 #include <Arduino.h>
 /**
- * @file main.ino
+ * @file main.cpp
  * @brief Embedded Temperature and Humidity Monitoring using DHT11
- * @author YOUR_NAME
- * @date YYYY-MM-DD
+ * @author krishna201i
+ * @date 2025-02-15
  *
  * @details
  * This program reads environmental data from the DHT11 sensor
  * and displays temperature and humidity values on Serial Monitor.
  * Students must complete the TODO sections.
  */
-
+#include <Arduino.h>
 #include <DHT.h>
+#define DHTPIN 2
+
+#define DHTTYPE DHT11
+
+DHT dht(DHTPIN, DHTTYPE);
 
 // TODO 1:
 // Define the DHT data pin (Use digital pin 2)
